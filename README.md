@@ -18,3 +18,4 @@
 - php artisan make:model Todo -m
 - php artisan migrate
 - php artisan make:controller TodoController -r (- crea todos los metodos del controller crud)
+- npm i --save @fortawesome/fontawesome-svg-core
