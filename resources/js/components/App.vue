@@ -2,29 +2,23 @@
     <div>
         <h1 class="title">Todo List</h1>
         <div class="todoListContainer">
-            <add-item-view/>
-            <list-view/>
+            <add-item-form></add-item-form>
+            <list-view></list-view>
         </div>
     </div>
 </template>
 
 <script>
-    import AddItemForm from './AddItemForm'
-    import ListView from './ListView'
-
     export default {
-        comments:{
-            AddItemForm,
-            ListView,
-        }
+
     }
 </script>
 <style scoped>
 
     .todoListContainer{
-        width: 100%;
+        width: 400px;
         margin: auto;
-        margin-top: 5px;
+        margin-top: 50px;
     }
 
     .title{

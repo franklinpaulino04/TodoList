@@ -1,4 +1,15 @@
+import Vue from 'vue'
 import App from './components/App'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faUserSecret, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faUserSecret, faEdit, faTrash)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
+Vue.config.productionTip = false
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -20,7 +31,9 @@ window.Vue = require('vue').default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-// Vue.component('example-component', require('./components/App.vue').default);
+Vue.component('add-item-form', require('./components/AddItemForm.vue').default);
+Vue.component('list-item', require('./components/ListItem.vue').default);
+Vue.component('list-view', require('./components/ListView.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -30,7 +43,7 @@ window.Vue = require('vue').default;
 
 const app = new Vue({
     el: '#app',
-    components:{
+    components: {
       App
     },
 });

@@ -25,27 +25,16 @@ class TodoController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function create(Request $request)
     {
-        $todoModel          = new TodoModel();
-        $todoModel->todo    = $request->todo;
-        $response           = $todoModel->save();
+        $todoModel       = new TodoModel();
+        $todoModel->todo = $request->todo;
+        $todoModel->save();
 
         return response()->json([
-            'result'        => $response,
+            'result'        => 1,
             'data'          => $todoModel,
         ]);
     }
@@ -82,12 +71,11 @@ class TodoController extends Controller
     public function update(Request $request, $id)
     {
         $row            = TodoModel::findOrFail($id);
-        $row->todo      = $request->todo;
-        $row->completed = $request->has('completed');
-        $response       = $row->save();
+        $row->completed = $request->completed;
+        $row->save();
 
         return response()->json([
-            'result'    => $response,
+            'result'    => 1,
             'data'      => $row,
         ]);
     }
@@ -100,11 +88,11 @@ class TodoController extends Controller
      */
     public function destroy($id)
     {
-        $row      = TodoModel::findOrFail($id);
-        $response = ($row->delete())? true : false;
+        $row = TodoModel::findOrFail($id);
+        $row->delete();
 
         return response()->json([
-            'result' => $response,
+            'result' => 1,
         ]);
     }
 }
