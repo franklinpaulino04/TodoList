@@ -7,6 +7,9 @@
     </div>
 </template>
 <script>
+
+    import EventBus from "../event-bus";
+
     export default {
 
         data: function() {
@@ -31,16 +34,24 @@
                         let { result, data } = response.data;
 
                         if(result == 1) {
-                            this.item.name = "";
+                            this.item.name  = "";
+
                         }
 
                     }).catch( (e) => {
                         console.log(e);
                     });
+
+                }else{
+                   alert('write a name.')
                 }
             },
 
         },
+
+        created() {
+
+        }
     }
 </script>
 

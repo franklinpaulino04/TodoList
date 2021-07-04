@@ -26,6 +26,7 @@
         methods: {
 
             async updateTodo() {
+
                 await axios.post('api/update/' + this.item.id, {
                     completed: this.item.completed,
                 })
@@ -35,7 +36,7 @@
 
                     if(result == 1) {
                         alert('Item updated succesfully!');
-                        this.$emit('reloadTodo');
+
                     }
 
                 })
@@ -45,6 +46,7 @@
             },
 
             async deleteTodo() {
+
                 await axios.get('api/delete/' + this.item.id)
                 .then(( response ) => {
 
@@ -52,7 +54,7 @@
 
                     if(result == 1){
                         alert('Item deleted succesfully!');
-                        this.$emit('reloadTodo');
+
                     }
 
                 })

@@ -4,11 +4,13 @@
 
             <!-- v-on funciona para mandar a llamar metodo a otro archivo vue -->
 
-            <list-item :item="item" class="item" v-on:reloadTodo="getItems()"></list-item>
+            <list-item :item="item" class="item"></list-item>
         </div>
     </div>
 </template>
 <script>
+    import EventBus from "../event-bus";
+
     export default {
 
         data: function() {
@@ -30,8 +32,10 @@
                     let { result, data } = response.data;
 
                     if(result == 1) {
+
                         this.isLoading  = true;
                         this.items      = data;
+
                     }
                 })
                 .catch((e) => {
